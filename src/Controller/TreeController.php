@@ -15,7 +15,7 @@ namespace Sonata\DoctrinePHPCRAdminBundle\Controller;
 
 use Doctrine\Bundle\PHPCRBundle\ManagerRegistry;
 use PHPCR\Util\PathHelper;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A controller to render the tree block.
  */
-class TreeController extends Controller
+class TreeController extends AbstractController
 {
     /**
      * @var string
