@@ -1,0 +1,5 @@
+Attachment
+Parâmetros:
+	- Type [obrigatório. valores: image, file, other. Esse pârametro vai alterar o ícone no botão]
+	- File Name [obrigatório]
+	- Link [obrigatório. quando o usuário clicar em cima do botão, abre uma nova aba com o link passado]
