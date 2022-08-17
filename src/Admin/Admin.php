@@ -18,6 +18,7 @@ use PHPCR\Util\UUIDHelper;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 
 /**
  * Extend the Admin class to incorporate phpcr changes.
@@ -60,7 +61,7 @@ class Admin extends AbstractAdmin
      *
      * @return ProxyQueryInterface
      */
-    public function createQuery($context = 'list')
+    /*public function createQuery($context = 'list')
     {
         $query = $this->getModelManager()->createQuery($this->getClass());
         $query->setRootPath($this->getRootPath());
@@ -70,16 +71,16 @@ class Admin extends AbstractAdmin
         }
 
         return $query;
-    }
+    }*/
 
     /**
      * @param object $object
      *
      * @return string
      */
-    public function id($object)
+    public function id(object $model): ?string
     {
-        return $this->getUrlsafeIdentifier($object);
+        return $this->getUrlsafeIdentifier($model);
     }
 
     /**
@@ -90,7 +91,7 @@ class Admin extends AbstractAdmin
      *
      * @return mixed
      */
-    public function getSubject()
+    /*public function getSubject()
     {
         if (null === $this->subject && $this->request) {
             $id = $this->request->get($this->getIdParameter());
@@ -105,12 +106,12 @@ class Admin extends AbstractAdmin
         }
 
         return $this->subject;
-    }
+    }*/
 
     /**
      * {@inheritdoc}
      */
-    public function toString($object)
+    public function toString(object $object): string
     {
         if (!\is_object($object)) {
             return parent::toString($object);
@@ -130,7 +131,7 @@ class Admin extends AbstractAdmin
         return parent::toString($object);
     }
 
-    protected function configureRoutes(RouteCollection $collection)
+    protected function configureRoutes(RouteCollectionInterface $collection): void
     {
         foreach (['edit', 'create', 'delete'] as $name) {
             if ($collection->has($name)) {

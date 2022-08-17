@@ -45,11 +45,11 @@ class SonataDoctrinePHPCRAdminBundle extends Bundle
 
     private function registerFormMapping()
     {
-        FormHelper::registerFormTypeMapping([
+        /*FormHelper::registerFormTypeMapping([
             'doctrine_phpcr_type_filter_choice' => ChoiceType::class,
             'choice_field_mask' => ChoiceFieldMaskType::class,
             'doctrine_phpcr_odm_tree_manager' => TreeManagerType::class,
             'doctrine_phpcr_odm_tree' => TreeModelType::class,
-        ]);
+        ]);*/
     }
 }
