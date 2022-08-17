@@ -27,7 +27,7 @@
         "doctrine/phpcr-odm": "^1.5.2 || ^2.0 || ^1.4",
         "sonata-project/admin-bundle": "^3.61 || ^4.17",
         "sonata-project/block-bundle": "^3.18.3 || ^4.11",
-        "symfony-cmf/resource-rest-bundle": "^1.0.1",
+        "symfony-cmf/resource-rest-bundle": "*",
         "symfony-cmf/tree-browser-bundle": "^2.0",
         "symfony/config": "^3.4.36 || ^4.4 || ^5.4",
         "symfony/dependency-injection": "^3.4.36 || ^4.4 || ^5.4",
