@@ -36,7 +36,7 @@ abstract class Filter extends BaseFilter
     /**
      * {@inheritdoc}
      */
-    public function isActive()
+    public function isActive(): bool
     {
         return $this->active;
     }
