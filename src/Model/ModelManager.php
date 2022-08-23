@@ -429,6 +429,22 @@ class ModelManager implements ModelManagerInterface
 
     /**
      * {@inheritdoc}
+    */
+    public function reverseTransform(object $object, array $array = []): void
+    {
+        //
+    }
+
+    /**
+     * {@inheritdoc}
+    */
+    public function supportsQuery(object $query): bool
+    {
+        //
+    }
+
+    /**
+     * {@inheritdoc}
      *
      * @throws NoSuchPropertyException if the class has no magic setter and
      *                                 public property for a field in array
