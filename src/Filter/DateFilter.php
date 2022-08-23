@@ -73,7 +73,7 @@ class DateFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions()
+    public function getDefaultOptions(): array
     {
         return [
             'date_format' => 'yyyy-MM-dd',
@@ -83,7 +83,7 @@ class DateFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getRenderSettings()
+    public function getRenderSettings(): array
     {
         return ['sonata_type_filter_date', [
             'field_type' => $this->getFieldType(),

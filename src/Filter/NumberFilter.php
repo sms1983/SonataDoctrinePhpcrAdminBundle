@@ -61,7 +61,7 @@ class NumberFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions()
+    public function getDefaultOptions(): array
     {
         return [];
     }
@@ -69,7 +69,7 @@ class NumberFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getRenderSettings()
+    public function getRenderSettings(): array
     {
         return ['sonata_type_filter_number', [
             'field_type' => $this->getFieldType(),

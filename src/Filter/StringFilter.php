@@ -70,7 +70,7 @@ class StringFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions()
+    public function getDefaultOptions(): array
     {
         return [
             'format' => '%%%s%%',
@@ -81,7 +81,7 @@ class StringFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getRenderSettings()
+    public function getRenderSettings(): array
     {
         return ['Sonata\DoctrinePHPCRAdminBundle\Form\Type\Filter\ChoiceType', [
             'field_type' => $this->getFieldType(),

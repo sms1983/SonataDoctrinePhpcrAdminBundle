@@ -64,7 +64,7 @@ class ChoiceFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions()
+    public function getDefaultOptions(): array
     {
         return [];
     }
@@ -72,7 +72,7 @@ class ChoiceFilter extends Filter
     /**
      * {@inheritdoc}
      */
-    public function getRenderSettings()
+    public function getRenderSettings(): array
     {
         return ['sonata_type_filter_default', [
             'operator_type' => 'sonata_type_equal',
