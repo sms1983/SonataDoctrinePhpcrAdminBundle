@@ -115,7 +115,7 @@ class ModelManager implements ModelManagerInterface
     public function find(string $class, $id): ?object
     {
         if (!isset($id)) {
-            return;
+            return null;
         }
 
         if (null === $class) {
@@ -276,7 +276,7 @@ class ModelManager implements ModelManagerInterface
 
         // the document is not managed
         if (!$model || !$this->getDocumentManager()->contains($model)) {
-            return;
+            return null;
         }
 
         $values = $this->getIdentifierValues($model);
