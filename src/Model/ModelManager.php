@@ -67,7 +67,7 @@ class ModelManager implements ModelManagerInterface
      *
      * @throws ModelManagerException if the document manager throws any exception
      */
-    public function create($object)
+    public function create(object $object): void
     {
         try {
             $this->dm->persist($object);
@@ -82,7 +82,7 @@ class ModelManager implements ModelManagerInterface
      *
      * @throws ModelManagerException if the document manager throws any exception
      */
-    public function update($object)
+    public function update(object $object): void
     {
         try {
             $this->dm->persist($object);
@@ -97,7 +97,7 @@ class ModelManager implements ModelManagerInterface
      *
      * @throws ModelManagerException if the document manager throws any exception
      */
-    public function delete($object)
+    public function delete(object $object): void
     {
         try {
             $this->dm->remove($object);
@@ -112,7 +112,7 @@ class ModelManager implements ModelManagerInterface
      *
      * {@inheritdoc}
      */
-    public function find($class, $id)
+    public function find(string $class, $id): ?object
     {
         if (!isset($id)) {
             return;
@@ -158,7 +158,7 @@ class ModelManager implements ModelManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function findBy($class, array $criteria = [])
+    public function findBy(string $class, array $criteria = []): array
     {
         return $this->dm->getRepository($class)->findBy($criteria);
     }
@@ -166,7 +166,7 @@ class ModelManager implements ModelManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneBy($class, array $criteria = [])
+    public function findOneBy(string $class, array $criteria = []): ?object
     {
         return $this->dm->getRepository($class)->findOneBy($criteria);
     }
@@ -209,7 +209,7 @@ class ModelManager implements ModelManagerInterface
      *
      * @return ProxyQueryInterface
      */
-    public function createQuery($class, $alias = 'a')
+    public function createQuery(string $class): ProxyQueryInterface
     {
         $qb = $this->getDocumentManager()->createQueryBuilder();
         $qb->from()->document($class, $alias);
@@ -222,7 +222,7 @@ class ModelManager implements ModelManagerInterface
      *
      * @return mixed
      */
-    public function executeQuery($query)
+    public function executeQuery(object $query)
     {
         return $query->execute();
     }
@@ -245,10 +245,10 @@ class ModelManager implements ModelManagerInterface
      *
      * {@inheritdoc}
      */
-    public function getIdentifierValues($document)
+    public function getIdentifierValues(object $model): array
     {
-        $class = $this->getMetadata(ClassUtils::getClass($document));
-        $path = $class->reflFields[$class->identifier]->getValue($document);
+        $class = $this->getMetadata(ClassUtils::getClass($model));
+        $path = $class->reflFields[$class->identifier]->getValue($model);
 
         return [$path];
     }
@@ -256,7 +256,7 @@ class ModelManager implements ModelManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getIdentifierFieldNames($class)
+    public function getIdentifierFieldNames(string $class): array
     {
         return [$this->getModelIdentifier($class)];
     }
@@ -268,18 +268,18 @@ class ModelManager implements ModelManagerInterface
      *
      * @throws \InvalidArgumentException if $document is not an object or null
      */
-    public function getNormalizedIdentifier($document)
+    public function getNormalizedIdentifier(object $model): ?string
     {
-        if (is_scalar($document)) {
+        if (is_scalar($model)) {
             throw new \InvalidArgumentException('Invalid argument, object or null required');
         }
 
         // the document is not managed
-        if (!$document || !$this->getDocumentManager()->contains($document)) {
+        if (!$model || !$this->getDocumentManager()->contains($model)) {
             return;
         }
 
-        $values = $this->getIdentifierValues($document);
+        $values = $this->getIdentifierValues($model);
 
         return $values[0];
     }
@@ -291,9 +291,9 @@ class ModelManager implements ModelManagerInterface
      *
      * @return string|null
      */
-    public function getUrlsafeIdentifier($document)
+    public function getUrlSafeIdentifier(object $model): ?string
     {
-        $id = $this->getNormalizedIdentifier($document);
+        $id = $this->getNormalizedIdentifier($model);
         if (null !== $id) {
             return substr($id, 1);
         }
@@ -302,16 +302,16 @@ class ModelManager implements ModelManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function addIdentifiersToQuery($class, ProxyQueryInterface $queryProxy, array $idx)
+    public function addIdentifiersToQuery(string $class, ProxyQueryInterface $query, array $idx): void
     {
-        /* @var $queryProxy ProxyQuery */
-        $qb = $queryProxy->getQueryBuilder();
+        /* @var $query ProxyQuery */
+        $qb = $query->getQueryBuilder();
 
         $orX = $qb->andWhere()->orX();
 
         foreach ($idx as $id) {
             $path = $this->getBackendId($id);
-            $orX->same($path, $queryProxy->getAlias());
+            $orX->same($path, $query->getAlias());
         }
     }
 
@@ -336,11 +336,11 @@ class ModelManager implements ModelManagerInterface
      *
      * @throws ModelManagerException if anything goes wrong during query execution
      */
-    public function batchDelete($class, ProxyQueryInterface $queryProxy)
+    public function batchDelete(string $class, ProxyQueryInterface $query): void
     {
         try {
             $i = 0;
-            $res = $queryProxy->execute();
+            $res = $query->execute();
             foreach ($res as $object) {
                 $this->dm->remove($object);
 
@@ -532,7 +532,7 @@ class ModelManager implements ModelManagerInterface
      *
      * Not really implemented.
      */
-    public function getExportFields($class)
+    public function getExportFields(string $class): array
     {
         return [];
     }
