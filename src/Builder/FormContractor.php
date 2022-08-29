@@ -99,7 +99,7 @@ class FormContractor implements FormContractorInterface
     /**
      * {@inheritdoc}
      */
-    public function getFormBuilder(string $name, array $formOptions = []): \Sonata\DoctrinePHPCRAdminBundle\Builder\FormBuilderInterface
+    public function getFormBuilder(string $name, array $formOptions = []): \Symfony\Component\Form\FormBuilderInterface
     {
         return $this->getFormFactory()->createNamedBuilder(
             $name,
