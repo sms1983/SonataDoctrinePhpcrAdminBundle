@@ -45,7 +45,7 @@ class FormContractor implements FormContractorInterface
      *
      * @throws \RuntimeException if the $fieldDescription does not specify a type
      */
-    public function fixFieldDescription(AdminInterface $admin, FieldDescriptionInterface $fieldDescription)
+    public function fixFieldDescription(FieldDescriptionInterface $fieldDescription): void
     {
         $metadata = null;
         if ($admin->getModelManager()->hasMetadata($admin->getClass())) {
@@ -99,13 +99,13 @@ class FormContractor implements FormContractorInterface
     /**
      * {@inheritdoc}
      */
-    public function getFormBuilder($name, array $options = [])
+    public function getFormBuilder(string $name, array $formOptions = []): FormBuilderInterface;
     {
         return $this->getFormFactory()->createNamedBuilder(
             $name,
             FormType::class,
             null,
-            $options
+            $formOptions
         );
     }
 
@@ -115,7 +115,11 @@ class FormContractor implements FormContractorInterface
      * @throws \LogicException if a sonata_type_model field does not have a
      *                         target model configured
      */
-    public function getDefaultOptions($type, FieldDescriptionInterface $fieldDescription)
+    public function getDefaultOptions(
+        ?string $type,
+        FieldDescriptionInterface $fieldDescription,
+        array $formOptions = []
+    ): array
     {
         $options = [];
         $options['sonata_field_description'] = $fieldDescription;
