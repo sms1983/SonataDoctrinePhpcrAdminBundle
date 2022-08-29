@@ -99,7 +99,7 @@ class FormContractor implements FormContractorInterface
     /**
      * {@inheritdoc}
      */
-    public function getFormBuilder(string $name, array $formOptions = []): FormBuilderInterface;
+    public function getFormBuilder(string $name, array $formOptions = []): FormBuilderInterface
     {
         return $this->getFormFactory()->createNamedBuilder(
             $name,
