@@ -32,7 +32,7 @@ class ChoiceType extends BaseChoiceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'doctrine_phpcr_type_filter_choice';
     }

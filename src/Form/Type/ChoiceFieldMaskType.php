@@ -51,7 +51,7 @@ class ChoiceFieldMaskType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'map' => [],
@@ -61,7 +61,7 @@ class ChoiceFieldMaskType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function getParent(): string
     {
         return ChoiceType::class;
     }
@@ -77,7 +77,7 @@ class ChoiceFieldMaskType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'choice_field_mask';
     }
