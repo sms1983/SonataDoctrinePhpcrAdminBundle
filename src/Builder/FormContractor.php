@@ -117,7 +117,7 @@ class FormContractor implements FormContractorInterface
      */
     public function getDefaultOptions(
         ?string $type,
-        FieldDescriptionInterface $fieldDescription,
+        \Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface $fieldDescription,
         array $formOptions = []
     ): array
     {
