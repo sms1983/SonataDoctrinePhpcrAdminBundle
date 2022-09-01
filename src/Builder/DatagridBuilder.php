@@ -151,7 +151,7 @@ class DatagridBuilder implements DatagridBuilderInterface
             $filter->setLabel($admin->getLabelTranslatorStrategy()->getLabel($fieldDescription->getName(), 'filter', 'label'));
         }
 
-        return $datagrid->addFilter($filter);
+        $datagrid->addFilter($filter);
     }
 
     /**
