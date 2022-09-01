@@ -50,7 +50,7 @@ class LegacyCollectionTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public static function getExtendedTypes()
+    public static function getExtendedTypes(): iterable
     {
         return [
             DeprecatedCollectionType::class,
