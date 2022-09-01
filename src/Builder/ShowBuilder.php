@@ -44,7 +44,7 @@ class ShowBuilder implements ShowBuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getBaseList(array $options = [])
+    public function getBaseList(array $options = []): FieldDescriptionCollection
     {
         return new FieldDescriptionCollection();
     }
