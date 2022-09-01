@@ -15,7 +15,7 @@ namespace Sonata\DoctrinePHPCRAdminBundle\Builder;
 
 use Doctrine\ODM\PHPCR\Mapping\ClassMetadata;
 use Sonata\AdminBundle\Admin\AdminInterface;
-use Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection;
+use Sonata\AdminBundle\Admin\FieldDescriptionCollection;
 use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 use Sonata\AdminBundle\Builder\ShowBuilderInterface;
 use Sonata\AdminBundle\Guesser\TypeGuesserInterface;
@@ -44,16 +44,16 @@ class ShowBuilder implements ShowBuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getBaseList(array $options = []): FieldDescriptionCollection
+public function getBaseList(array $options = []): \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection
     {
-        return new FieldDescriptionCollection();
+        return new \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection();
     }
 
     /**
      * {@inheritdoc}
      */
     public function addField(
-        FieldDescriptionCollection $list,
+        \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection $list,
         ?string $type,
         FieldDescriptionInterface $fieldDescription
     ): void

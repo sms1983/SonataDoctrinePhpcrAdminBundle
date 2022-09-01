@@ -42,9 +42,9 @@ class ListBuilder implements ListBuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getBaseList(array $options = []): FieldDescriptionCollection
+    public function getBaseList(array $options = []): \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection
     {
-        return new FieldDescriptionCollection();
+        return new \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection();
     }
 
     /**
@@ -66,7 +66,7 @@ class ListBuilder implements ListBuilderInterface
      * {@inheritdoc}
      */
     public function addField(
-        FieldDescriptionCollection $list,
+        \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection $list,
         ?string $type,
         FieldDescriptionInterface $fieldDescription
     ): void
