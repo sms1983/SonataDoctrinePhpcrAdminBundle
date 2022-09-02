@@ -173,4 +173,9 @@ class DatagridBuilder implements DatagridBuilderInterface
 
         return new Datagrid($admin->createQuery(), $admin->getList(), $this->getPager(), $formBuilder, $values);
     }
+
+    public function guess(FieldDescriptionInterface $fieldDescription): ?TypeGuess
+    {
+        //
+    }
 }

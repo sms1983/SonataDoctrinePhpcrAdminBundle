@@ -144,4 +144,9 @@ public function getBaseList(array $options = []): \Sonata\AdminBundle\FieldDescr
 
         return $this->templates[$type];
     }
+
+    public function guess(FieldDescriptionInterface $fieldDescription): ?TypeGuess
+    {
+        //
+    }
 }

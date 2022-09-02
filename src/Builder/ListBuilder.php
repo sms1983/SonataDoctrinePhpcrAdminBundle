@@ -245,4 +245,9 @@ class ListBuilder implements ListBuilderInterface
 
         return $this->templates[$type];
     }
+
+    public function guess(FieldDescriptionInterface $fieldDescription): ?TypeGuess
+    {
+        //
+    }
 }

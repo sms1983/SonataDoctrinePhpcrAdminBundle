@@ -19,6 +19,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\FieldDescriptionCollection;
 use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 use Sonata\AdminBundle\FieldDescription\TypeGuesserInterface;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\FieldDescription;
 use Sonata\DoctrinePHPCRAdminBundle\Builder\ListBuilder;
@@ -185,5 +186,10 @@ class ListBuilderTest extends TestCase
         $this->fieldDescriptionCollection->expects(static::once())
             ->method('add')
             ->with($this->fieldDescription);
+    }
+
+    public function guess(FieldDescriptionInterface $fieldDescription): ?TypeGuess
+    {
+        //
     }
 }

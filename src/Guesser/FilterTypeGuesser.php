@@ -18,6 +18,7 @@ use Doctrine\Bundle\PHPCRBundle\ManagerRegistry;
 use Doctrine\ODM\PHPCR\Mapping\ClassMetadata;
 use Doctrine\ODM\PHPCR\Mapping\MappingException;
 use Sonata\AdminBundle\FieldDescription\TypeGuesserInterface;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Model\ModelManagerInterface;
 use Sonata\DoctrinePHPCRAdminBundle\Filter\BooleanFilter;
 use Sonata\DoctrinePHPCRAdminBundle\Filter\DateFilter;
@@ -137,5 +138,10 @@ class FilterTypeGuesser implements TypeGuesserInterface
                 // not an entity or mapped super class
             }
         }
+    }
+
+    public function guess(FieldDescriptionInterface $fieldDescription): ?TypeGuess
+    {
+        //
     }
 }
