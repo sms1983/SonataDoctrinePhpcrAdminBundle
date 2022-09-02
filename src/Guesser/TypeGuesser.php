@@ -24,6 +24,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Guess\Guess;
 use Symfony\Component\Form\Guess\TypeGuess;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 
 /**
  * Guesser for displaying fields.
@@ -46,6 +47,11 @@ class TypeGuesser implements TypeGuesserInterface
     {
         $this->registry = $registry;
         $this->cache = [];
+    }
+
+    public function guess(FieldDescriptionInterface $fieldDescription): ?TypeGuess
+    {
+        //
     }
 
     /**
