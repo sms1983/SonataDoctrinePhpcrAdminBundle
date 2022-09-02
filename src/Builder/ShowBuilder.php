@@ -44,7 +44,7 @@ class ShowBuilder implements ShowBuilderInterface
     /**
      * {@inheritdoc}
      */
-public function getBaseList(array $options = []): \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection
+    public function getBaseList(array $options = []): \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection
     {
         return new \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection();
     }
