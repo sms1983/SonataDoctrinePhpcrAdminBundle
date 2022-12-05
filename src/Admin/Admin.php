@@ -123,10 +123,10 @@ class Admin extends AbstractAdmin
             return '' !== $string ? $string : $this->trans('link_add', [], 'SonataAdminBundle');
         }
 
-        $dm = $this->getModelManager()->getDocumentManager();
-        if ($dm->contains($object)) {
-            return PathHelper::getNodeName($dm->getUnitOfWork()->getDocumentId($object));
-        }
+        // $dm = $this->getModelManager()->getDocumentManager();
+        // if ($dm->contains($object)) {
+        //     return PathHelper::getNodeName($dm->getUnitOfWork()->getDocumentId($object));
+        // }
 
         return parent::toString($object);
     }
