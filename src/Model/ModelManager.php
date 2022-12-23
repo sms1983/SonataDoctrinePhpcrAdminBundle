@@ -209,7 +209,7 @@ class ModelManager implements ModelManagerInterface
      *
      * @return ProxyQueryInterface
      */
-    public function createQuery(string $class): ProxyQueryInterface
+    public function createQuery(string $class, string $alias = 'a'): ProxyQueryInterface
     {
         $qb = $this->getDocumentManager()->createQueryBuilder();
         $qb->from()->document($class, $alias);
