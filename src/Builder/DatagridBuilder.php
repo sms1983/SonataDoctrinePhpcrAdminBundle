@@ -86,10 +86,12 @@ class DatagridBuilder implements DatagridBuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function fixFieldDescription(FieldDescriptionInterface $fieldDescription): void
+    public function fixFieldDescription(AdminInterface $admin = null, FieldDescriptionInterface $fieldDescription): void
     {
         // set default values
-        $fieldDescription->setAdmin($admin);
+        if ($admin) {
+            $fieldDescription->setAdmin($admin);
+        }
 
         if ($admin->getModelManager()->hasMetadata($admin->getClass())) {
             $metadata = $admin->getModelManager()->getMetadata($admin->getClass());
