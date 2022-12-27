@@ -68,7 +68,8 @@ class ListBuilder implements ListBuilderInterface
     public function addField(
         \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection $list,
         ?string $type,
-        FieldDescriptionInterface $fieldDescription
+        FieldDescriptionInterface $fieldDescription,
+        AdminInterface $admin = null
     ): void
     {
         $this->buildField($type, $fieldDescription, $admin);
@@ -82,13 +83,16 @@ class ListBuilder implements ListBuilderInterface
      *
      * @throws \RuntimeException if the $fieldDescription does not have a type
      */
-    public function fixFieldDescription(FieldDescriptionInterface $fieldDescription): void
+    public function fixFieldDescription(AdminInterface $admin = null, FieldDescriptionInterface $fieldDescription): void
     {
         if ('_action' === $fieldDescription->getName() || 'actions' === $fieldDescription->getType()) {
             $this->buildActionFieldDescription($fieldDescription);
         }
 
-        $fieldDescription->setAdmin($admin);
+        if ($admin) {
+            $fieldDescription->setAdmin($admin);
+        }
+
         $metadata = null;
 
         if ($admin->getModelManager()->hasMetadata($admin->getClass())) {

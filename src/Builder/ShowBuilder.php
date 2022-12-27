@@ -55,7 +55,8 @@ class ShowBuilder implements ShowBuilderInterface
     public function addField(
         \Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection $list,
         ?string $type,
-        FieldDescriptionInterface $fieldDescription
+        FieldDescriptionInterface $fieldDescription,
+        AdminInterface $admin = null
     ): void
     {
         if (null === $type) {
@@ -78,9 +79,11 @@ class ShowBuilder implements ShowBuilderInterface
      *
      * @throws \RuntimeException if the $fieldDescription does not have a type
      */
-    public function fixFieldDescription(FieldDescriptionInterface $fieldDescription): void
+    public function fixFieldDescription(AdminInterface $admin = null, FieldDescriptionInterface $fieldDescription): void
     {
-        $fieldDescription->setAdmin($admin);
+        if ($admin) {
+            $fieldDescription->setAdmin($admin);
+        }
 
         $metadata = null;
         if ($admin->getModelManager()->hasMetadata($admin->getClass())) {
