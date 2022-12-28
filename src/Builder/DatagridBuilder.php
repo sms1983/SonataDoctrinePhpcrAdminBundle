@@ -93,7 +93,7 @@ class DatagridBuilder implements DatagridBuilderInterface
             $fieldDescription->setAdmin($admin);
         }
 
-        if ($admin->getModelManager()->hasMetadata($admin->getClass())) {
+        if ($admin && $admin->getModelManager()->hasMetadata($admin->getClass())) {
             $metadata = $admin->getModelManager()->getMetadata($admin->getClass());
 
             // set the default field mapping
@@ -123,7 +123,8 @@ class DatagridBuilder implements DatagridBuilderInterface
     public function addFilter(
         DatagridInterface $datagrid,
         ?string $type,
-        FieldDescriptionInterface $fieldDescription
+        FieldDescriptionInterface $fieldDescription,
+        AdminInterface $admin = null
     ): void
     {
         if (null === $type) {
@@ -144,7 +145,10 @@ class DatagridBuilder implements DatagridBuilderInterface
         }
 
         $this->fixFieldDescription($admin, $fieldDescription);
-        $admin->addFilterFieldDescription($fieldDescription->getName(), $fieldDescription);
+
+        if ($admin) {
+            $admin->addFilterFieldDescription($fieldDescription->getName(), $fieldDescription);
+        }
 
         $fieldDescription->mergeOption('field_options', ['required' => false]);
         $filter = $this->filterFactory->create($fieldDescription->getName(), $type, $fieldDescription->getOptions());
