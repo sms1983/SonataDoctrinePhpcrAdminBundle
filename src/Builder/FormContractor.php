@@ -48,7 +48,7 @@ class FormContractor implements FormContractorInterface
     public function fixFieldDescription(AdminInterface $admin = null, \Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface $fieldDescription): void
     {
         $metadata = null;
-        if ($admin->getModelManager()->hasMetadata($admin->getClass())) {
+        if ($admin && $admin->getModelManager()->hasMetadata($admin->getClass())) {
             /** @var ClassMetadata $metadata */
             $metadata = $admin->getModelManager()->getMetadata($admin->getClass());
 
