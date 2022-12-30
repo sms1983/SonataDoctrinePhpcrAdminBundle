@@ -65,9 +65,8 @@ class FormContractor implements FormContractorInterface
 
         if (!$fieldDescription->getType()) {
             throw new \RuntimeException(sprintf(
-                'Please define a type for field `%s` in `%s`',
-                $fieldDescription->getName(),
-                \get_class($admin)
+                'Please define a type for field `%s`',
+                $fieldDescription->getName()
             ));
         }
 
