@@ -112,7 +112,7 @@ class ModelManager implements ModelManagerInterface
      *
      * {@inheritdoc}
      */
-    public function find(string $class, $id): ?object
+    public function find(?string $class, $id): ?object
     {
         if (!isset($id)) {
             return null;

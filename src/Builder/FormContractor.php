@@ -71,7 +71,10 @@ class FormContractor implements FormContractorInterface
             ));
         }
 
-        $fieldDescription->setAdmin($admin);
+        if ($admin) {
+            $fieldDescription->setAdmin($admin);
+        }
+
         $fieldDescription->setOption('edit', $fieldDescription->getOption('edit', 'standard'));
 
         $mappingTypes = [
@@ -127,7 +130,7 @@ class FormContractor implements FormContractorInterface
         switch ($type) {
             case TreeModelType::class:
             case 'doctrine_phpcr_odm_tree':
-                $options['class'] = $fieldDescription->getTargetEntity();
+                $options['class'] = $fieldDescription->getTargetModel();
                 $options['model_manager'] = $fieldDescription->getAdmin()->getModelManager();
 
                 break;
